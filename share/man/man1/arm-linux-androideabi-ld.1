@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "LD 1"
-.TH LD 1 "2014-05-31" "binutils-2.24.51" "GNU Development Tools"
+.TH LD 1 "2014-07-19" "binutils-2.24.51" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -1929,16 +1929,16 @@ enable other tradeoffs in future versions of the linker.
 .IP "\fB\-\-build\-id=\fR\fIstyle\fR" 4
 .IX Item "--build-id=style"
 .PD
-Request creation of \f(CW\*(C`.note.gnu.build\-id\*(C'\fR \s-1ELF\s0 note section.
-The contents of the note are unique bits identifying this linked
-file.  \fIstyle\fR can be \f(CW\*(C`uuid\*(C'\fR to use 128 random bits,
-\&\f(CW\*(C`sha1\*(C'\fR to use a 160\-bit \s-1SHA1\s0 hash on the normative
-parts of the output contents, \f(CW\*(C`md5\*(C'\fR to use a 128\-bit
-\&\s-1MD5\s0 hash on the normative parts of the output contents, or
-\&\f(CW\*(C`0x\f(CIhexstring\f(CW\*(C'\fR to use a chosen bit string specified as
-an even number of hexadecimal digits (\f(CW\*(C`\-\*(C'\fR and \f(CW\*(C`:\*(C'\fR
-characters between digit pairs are ignored).  If \fIstyle\fR is
-omitted, \f(CW\*(C`sha1\*(C'\fR is used.
+Request the creation of a \f(CW\*(C`.note.gnu.build\-id\*(C'\fR \s-1ELF\s0 note section
+or a \f(CW\*(C`.build\-id\*(C'\fR \s-1COFF\s0 section.  The contents of the note are
+unique bits identifying this linked file.  \fIstyle\fR can be
+\&\f(CW\*(C`uuid\*(C'\fR to use 128 random bits, \f(CW\*(C`sha1\*(C'\fR to use a 160\-bit
+\&\s-1SHA1\s0 hash on the normative parts of the output contents,
+\&\f(CW\*(C`md5\*(C'\fR to use a 128\-bit \s-1MD5\s0 hash on the normative parts of
+the output contents, or \f(CW\*(C`0x\f(CIhexstring\f(CW\*(C'\fR to use a chosen bit
+string specified as an even number of hexadecimal digits (\f(CW\*(C`\-\*(C'\fR and
+\&\f(CW\*(C`:\*(C'\fR characters between digit pairs are ignored).  If \fIstyle\fR
+is omitted, \f(CW\*(C`sha1\*(C'\fR is used.
 .Sp
 The \f(CW\*(C`md5\*(C'\fR and \f(CW\*(C`sha1\*(C'\fR styles produces an identifier
 that is always the same in an identical output file, but will be
@@ -2154,11 +2154,15 @@ creation step.
 [This option is specific to the i386 \s-1PE\s0 targeted port of the linker]
 .IP "\fB\-\-enable\-auto\-image\-base\fR" 4
 .IX Item "--enable-auto-image-base"
-Automatically choose the image base for DLLs, unless one is specified
-using the \f(CW\*(C`\-\-image\-base\*(C'\fR argument.  By using a hash generated
-from the dllname to create unique image bases for each \s-1DLL,\s0 in-memory
-collisions and relocations which can delay program execution are
-avoided.
+.PD 0
+.IP "\fB\-\-enable\-auto\-image\-base=\fR\fIvalue\fR" 4
+.IX Item "--enable-auto-image-base=value"
+.PD
+Automatically choose the image base for DLLs, optionally starting with base
+\&\fIvalue\fR, unless one is specified using the \f(CW\*(C`\-\-image\-base\*(C'\fR argument.
+By using a hash generated from the dllname to create unique image bases
+for each \s-1DLL,\s0 in-memory collisions and relocations which can delay program
+execution are avoided.
 [This option is specific to the i386 \s-1PE\s0 targeted port of the linker]
 .IP "\fB\-\-disable\-auto\-image\-base\fR" 4
 .IX Item "--disable-auto-image-base"
@@ -2490,7 +2494,7 @@ the Info entries for \fIbinutils\fR and
 \&\fIld\fR.
 .SH "COPYRIGHT"
 .IX Header "COPYRIGHT"
-Copyright (c) 1991\-2013 Free Software Foundation, Inc.
+Copyright (c) 1991\-2014 Free Software Foundation, Inc.
 .PP
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the \s-1GNU\s0 Free Documentation License, Version 1.3
